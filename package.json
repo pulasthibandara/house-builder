@@ -1,0 +1,12 @@
+{
+  "name": "house-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Pulasthi Bandara <pulasthi1989@gmail.com> (www.pulasthibandara.com)",
+  "license": "ISC",
+  "repository": "https://github.com/pulasthibandara/house-builder.git"
+}
