@@ -4,15 +4,20 @@ import { raycaster, camera, rollOverMesh, scene, plane } from './scene';
 import { buildingMaterials } from './material';
 
 
+/**
+ * Main scene controller
+ */
 class SceneController {
-
-    private voxelGeometry = new BoxGeometry(50,50,50);
 
     constructor ( private sceneStateStore: ISceneState ) 
     {
 
     }
 
+    /**
+     * Draw rollover box on mouse position.
+     * @param event mouse move event
+     */
     placeMousePointer ( event: MouseEvent )
     {
 
@@ -41,6 +46,10 @@ class SceneController {
 
     }
 
+    /**
+     * Insert or remove elements at the mouse click position.
+     * @param event Mouse click event
+     */
     onMouseClick ( event: MouseEvent )
     {
         event.preventDefault();
@@ -54,17 +63,26 @@ class SceneController {
         raycaster.setFromCamera( mouse, camera );
 
         let intersects = raycaster.intersectObjects( this.sceneStateStore.sceneObjects );
+
+        // if the click intersetcts
         if ( intersects.length > 0 ) {
             let intersect = intersects[ 0 ];
 
+            // if on the removel mode and the intersect is not the plane remove
+            // that voxle
             if ( this.sceneStateStore.removeMode ) {
                 if ( !this.isPlane( intersect ) ) {
                     scene.remove( intersect.object );
                     this.sceneStateStore.sceneObjects.splice( 
                         this.sceneStateStore.sceneObjects.indexOf( <Mesh>(intersect.object) ), 1 );
                 }
+
+            // insert a voxel with the selected shape and material
             } else {
-                let voxel = new Mesh( this.voxelGeometry , this.sceneStateStore.selectedMaterial );
+                let voxel = new Mesh( 
+                    this.sceneStateStore.selectedShape, 
+                    this.sceneStateStore.selectedMaterial );
+
                 voxel.position.copy( intersect.point ).add( intersect.face.normal );
                 voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
                 scene.add( voxel );
@@ -74,6 +92,10 @@ class SceneController {
         }
     }
 
+    /**
+     * If shift key is pressed enter into removal mode by setting the global state.
+     * @param event keydown event
+     */
     handleKeydown ( event: KeyboardEvent )
     {
         if( event.keyCode == 16 ) {
@@ -81,6 +103,10 @@ class SceneController {
         }
     }
 
+    /**
+     * When shift key is released disable remove mode.
+     * @param event keyup event
+     */
     handleKeyup ( event: KeyboardEvent )
     {
         if( event.keyCode == 16 ) {
@@ -88,6 +114,10 @@ class SceneController {
         }
     }
 
+    /**
+     * Returns if the intersect onject is the plane.
+     * @param intersect interset object
+     */
     private isPlane ( intersect: any ): boolean
     {
         return intersect.object == plane;

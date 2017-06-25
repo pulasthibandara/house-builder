@@ -30,7 +30,7 @@ export const scene = new Scene(),
     directionalLight = new DirectionalLight(0xFFFFFF, .6),
     camera = 
         new PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 1, 10000 ),
-    stage = document.getElementById('scene-stage');
+    stage = <HTMLElement> document.getElementById('scene-stage');
 
 export let rollOverMesh: Mesh, 
     cubeGeo: BoxGeometry, 
@@ -40,6 +40,10 @@ export let rollOverMesh: Mesh,
     controls: OrbitControls,
     plane: Mesh;
 
+
+/**
+ * initialize THREEjs scene
+ */
 export function initScene()
 {
     // setup renderer / stage/ scene
@@ -93,6 +97,9 @@ export function initScene()
     render();
 }
 
+/**
+ * register global event listeners
+ */
 function registerEvents () 
 {
     // register events
