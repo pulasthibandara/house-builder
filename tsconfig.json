@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "strictNullChecks": true
+    },
+    "files": [
+        "./src/js/app.ts"
+    ]
+}
