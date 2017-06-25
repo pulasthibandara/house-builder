@@ -1,0 +1,14 @@
+body {
+  margin: 0; }
+
+canvas {
+  width: 100%;
+  height: 100%; }
+#control-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0; }
+  #control-wrapper label {
+    display: block; }
+
+/*# sourceMappingURL=styles-11822e1b8faffd166ce7.css.map*/

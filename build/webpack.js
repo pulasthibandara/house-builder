@@ -15,7 +15,7 @@ module.exports = {
         ]
     },
     output: {
-        path: path.join( helpers._root, "app" ),
+        path: path.join( helpers._root, "docs" ),
         filename: "js/app-[hash].js"
     },
     devtool: "source-map",
