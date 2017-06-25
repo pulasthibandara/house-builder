@@ -23,5 +23,7 @@ plane
 1. To remove a shape *shift click* on the shape to remove
 1. To rotate the scene *drag* while holding down the mouse
 
+[DEMO!](https://pulasthibandara.github.io/house-builder/)
+
 ## Example
 ![House Builder Example](example.png)
