@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "webpack-dev-server --config build/webpack.js --colors",
+    "build": "webpack --config build/webpack.prod.js --colors",
     "test": "test"
   },
   "author": "Pulasthi Bandara <pulasthi1989@gmail.com> (www.pulasthibandara.com)",

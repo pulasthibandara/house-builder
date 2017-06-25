@@ -9,6 +9,10 @@ var path = require( 'path' ),
 module.exports = {
     entry: {
         app: "./src",
+        vendor: [
+            'three',
+            'three-orbitcontrols-ts'
+        ]
     },
     output: {
         path: path.join( helpers._root, "app" ),
@@ -22,6 +26,7 @@ module.exports = {
         loaders: [
             { test: /\.ts$/, loader: "awesome-typescript-loader" },
             { test: /\.partial\.html$/, loader: 'file-loader?name=partial/[name]-[hash].[ext]' },
+            { test: /\.(jpg|png)$/, loader: 'file-loader?name=images/[name]-[hash].[ext]' },
             { test: /\.scss$/, loader: "style-loader!css-loader!sass-loader" }
         ],
         preLoaders: [
